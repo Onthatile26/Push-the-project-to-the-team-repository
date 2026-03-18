@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+
+import Header from "./Components/Layout/Header";
+import Footer from "./Components/Layout/Footer";
+import Home from "./Pages/Home"; 
+
+import backend from "./assets/Images/backend-dev.webp";
+import frontend from "./assets/Images/frontdeveloper.webp";
+import ui from "./assets/Images/ui-developer.webp";
+
+import laptop from "./assets/Images/laptop.jpg";
+import iphone from "./assets/Images/iphone.jpg";
+import car from "./assets/Images/car.jpg";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [message, setMessage] = useState(
+    "Click the button to send a message"
+  );
+
+  function handleClick() {
+    setMessage("Message sent successfully!");
+  }
+
+  const cardContainer = {
+    display: "flex",
+    justifyContent: "center",
+    gap: "20px",
+    marginTop: "30px",
+    flexWrap: "wrap",
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Header />
+
+      <Home
+        message={message}
+        handleClick={handleClick}
+        cardContainer={cardContainer}
+        frontend={frontend}
+        backend={backend}
+        ui={ui}
+        laptop={laptop}
+        iphone={iphone}
+        car={car}
+      />
+
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
