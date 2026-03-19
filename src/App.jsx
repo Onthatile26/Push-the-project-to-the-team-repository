@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./Components/Layout/Header";
 import Footer from "./Components/Layout/Footer";
-import Home from "./Pages/Home"; 
+import Home from "./Pages/Home";
+import About from "./Pages/About";
 
 import backend from "./assets/Images/backend-dev.webp";
 import frontend from "./assets/Images/frontdeveloper.webp";
@@ -33,17 +35,26 @@ function App() {
     <div>
       <Header />
 
-      <Home
-        message={message}
-        handleClick={handleClick}
-        cardContainer={cardContainer}
-        frontend={frontend}
-        backend={backend}
-        ui={ui}
-        laptop={laptop}
-        iphone={iphone}
-        car={car}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              message={message}
+              handleClick={handleClick}
+              cardContainer={cardContainer}
+              frontend={frontend}
+              backend={backend}
+              ui={ui}
+              laptop={laptop}
+              iphone={iphone}
+              car={car}
+            />
+          }
+        />
+
+        <Route path="/about" element={<About />} />
+      </Routes>
 
       <Footer />
     </div>
